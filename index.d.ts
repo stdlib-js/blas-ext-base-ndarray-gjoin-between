@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,17 +16,30 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { typedndarray } from '@stdlib/types/ndarray';
 
 /**
-* Return a string by joining one-dimensional ndarray elements using a specified separator for each pair of consecutive elements.
+* Returns a string by joining one-dimensional ndarray elements using a specified separator for each pair of consecutive elements.
 *
-* @module @stdlib/blas-ext-base-ndarray-gjoin-between
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*     -   a zero-dimensional ndarray containing a prefix string.
+*     -   a zero-dimensional ndarray containing a suffix string.
+*     -   a one-dimensional ndarray containing separator strings.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns joined string
 *
 * @example
 * var vector = require( '@stdlib/ndarray-vector-ctor' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
-* var gjoinBetween = require( '@stdlib/blas-ext-base-ndarray-gjoin-between' );
 *
 * var x = vector( [ 1, 2, 3, 4 ], 'generic' );
 *
@@ -43,12 +56,9 @@
 * var v = gjoinBetween( [ x, prefix, suffix, separators ] );
 * // returns 'op: 1 + 2 - 3 != 4'
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function gjoinBetween<T = unknown>( arrays: [ typedndarray<T>, typedndarray<string>, typedndarray<string>, typedndarray<string> ] ): string;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = gjoinBetween;
